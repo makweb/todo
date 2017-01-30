@@ -23,10 +23,11 @@ var express  = require('express'),
  * MONGOLAB_URI=mongodb://example:example@ds053312.mongolab.com:53312/todolist
  * 'mongodb://example:example@ds053312.mongolab.com:53312/todolist'
  */
-
+var db = false;
 mongoose.connect("mongodb://makweb:kpako396pa@ds137749.mlab.com:37749/todo", function (error) {
     if (error) console.error(error);
-    else console.log('mongo connected');
+    else { console.log('mongo connected'); db = true;}
+
 });
 
 express()
@@ -35,7 +36,7 @@ express()
   .use(bodyParser.urlencoded({ extended: true })) // support encoded bodies
 
   .get('/api', function (req, res) {
-    res.json(200, {msg: 'OK' });
+    res.json(200, {msg: 'OK' + db });
   })
 
   .get('/api/todos', function (req, res) {
