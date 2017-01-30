@@ -24,7 +24,7 @@ var express  = require('express'),
  * 'mongodb://example:example@ds053312.mongolab.com:53312/todolist'
  */
 var db = false;
-mongoose.connect("mongodb://makweb:kpako396pa@ds137749.mlab.com:37749/todo", function (error) {
+mongoose.connect("mongodb://makweb@yandex.ru:kpako396pa@ds137749.mlab.com:37749/todo", function (error) {
     if (error) console.error(error);
     else { console.log('mongo connected'); db = true;}
 
