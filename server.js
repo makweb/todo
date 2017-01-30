@@ -6,13 +6,13 @@ var express  = require('express'),
     bodyParser = require('body-parser'),
 
     // Mongoose Schema definition
-    Schema = new mongoose.Schema({
+/*    Schema = new mongoose.Schema({
       id       : String, 
       title    : String,
       completed: Boolean
     }),
 
-    Todo = mongoose.model('Todo', Schema);
+    Todo = mongoose.model('Todo', Schema);*/
 
 /*
  * I’m sharing my credential here.
@@ -23,7 +23,8 @@ var express  = require('express'),
  * MONGOLAB_URI=mongodb://example:example@ds053312.mongolab.com:53312/todolist
  * 'mongodb://example:example@ds053312.mongolab.com:53312/todolist'
  */
-mongoose.connect(process.env.MONGOLAB_URI, function (error) {
+ 
+mongoose.connect("mongodb://makweb:kpako396pa@ds137749.mlab.com:37749/todo", function (error) {
     if (error) console.error(error);
     else console.log('mongo connected');
 });
@@ -33,10 +34,10 @@ express()
   .use(bodyParser.json()) // support json encoded bodies
   .use(bodyParser.urlencoded({ extended: true })) // support encoded bodies
 
-  .get('/api', function (req, res) {
+  .get('/', function (req, res) {
     res.json(200, {msg: 'OK' });
   })
-
+/*
   .get('/api/todos', function (req, res) {
     // http://mongoosejs.com/docs/api.html#query_Query-find
     Todo.find( function ( err, todos ){
@@ -87,7 +88,7 @@ express()
         res.json(200, {msg: 'OK'});
       });
     });
-  })
+  })*/
 
   .use(express.static(__dirname + '/'))
   .listen(process.env.PORT || 5000);
